@@ -1,4 +1,8 @@
-﻿@model MovieListNA20.Models.Movie
+﻿@using MovieListNA20.Services
+
+@model MovieListNA20.Models.Movie
+@inject ISelectService genre
+
 
 @{
     ViewData["Title"] = "Edit";
@@ -25,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Genre" class="control-label"></label>
-                <select asp-for="Genre" class="form-control"></select>
+                <select asp-for="Genre" asp-items="@await genre.GetSelectAsync()" class="form-control"></select>
                 <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MovieListNA20.Data;
+using MovieListNA20.Services;
 
 namespace MovieListNA20
 {
@@ -26,6 +27,8 @@ namespace MovieListNA20
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<ISelectService, GenreSelectService>();
 
             services.AddDbContext<MovieListNA20Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MovieListNA20Context")));
