@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MovieListNA20.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form asp-action="Filter">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="title" placeholder="Search on title..." />
+        <div class="input-group-append">
+            <select name="genre" asp-items="@Html.GetEnumSelectList<Genre>()" class="form-control">
+                <option selected="selected" value="">Please select</option>
+            </select>
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary"><i class="fa fa-search">&emsp;Search</i></button>
+        </div>
+    </div>
+</form>
+
+<partial name="MovieListPartial" />
