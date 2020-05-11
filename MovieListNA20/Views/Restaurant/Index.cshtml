@@ -1,0 +1,26 @@
+﻿@model MovieListNA20.ViewModels.RestaurantIndexViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body> 
+    <table>
+        <h1>@Model.CurrentMessage</h1>
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <tr>
+                <td>@restaurant.Id</td>
+                <td>@restaurant.Name</td>
+                <td>
+                    <a href="restaurant/details/@restaurant.Id">Details</a>
+                    @Html.ActionLink("Go", "details", new { id = restaurant.Id});
+                    <a asp-action="details" asp-route-id="@restaurant.Id">More</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <a asp-action="create">Add Restaurant</a>
+</body>
+</html>
+

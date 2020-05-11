@@ -1,0 +1,14 @@
+﻿@model MovieListNA20.Models.Restaurant
+
+
+<h1>Create</h1>
+
+<form method="post">
+
+    <input asp-for="Name" />
+
+    <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()">
+        <option value="value">text</option>
+    </select>
+    <input type="submit" name="Save" value="Save" />
+</form>

@@ -29,6 +29,7 @@ namespace MovieListNA20
             services.AddControllersWithViews();
 
             services.AddTransient<ISelectService, GenreSelectService>();
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
 
             services.AddDbContext<MovieListNA20Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MovieListNA20Context")));

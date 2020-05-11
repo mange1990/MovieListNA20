@@ -11,6 +11,7 @@ using MovieListNA20.Models.ViewModels;
 
 namespace MovieListNA20.Controllers
 {
+   
     public class MoviesController : Controller
     {
         private readonly MovieListNA20Context _context;
@@ -18,6 +19,10 @@ namespace MovieListNA20.Controllers
         public MoviesController(MovieListNA20Context context)
         {
             _context = context;
+        }
+  
+        public string Phone() {
+            return "5212123";
         }
 
         // GET: Movies
