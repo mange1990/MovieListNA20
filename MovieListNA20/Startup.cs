@@ -30,6 +30,9 @@ namespace MovieListNA20
 
             services.AddTransient<ISelectService, GenreSelectService>();
             services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddDbContext<OdeToFoodDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("OdeToFood"))
+            ); 
 
             services.AddDbContext<MovieListNA20Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MovieListNA20Context")));

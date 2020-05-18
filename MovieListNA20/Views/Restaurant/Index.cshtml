@@ -5,22 +5,20 @@
     <title></title>
 </head>
 <body> 
-    <table>
+
         <h1>@Model.CurrentMessage</h1>
-        @foreach (var restaurant in Model.Restaurants)
+
+        @foreach(var restaurant in Model.Restaurants)
         {
-            <tr>
-                <td>@restaurant.Id</td>
-                <td>@restaurant.Name</td>
-                <td>
-                    <a href="restaurant/details/@restaurant.Id">Details</a>
-                    @Html.ActionLink("Go", "details", new { id = restaurant.Id});
-                    <a asp-action="details" asp-route-id="@restaurant.Id">More</a>
-                </td>
-            </tr>
+            @Html.Partial("_summary", restaurant);
         }
-    </table>
+
+
+<div>
     <a asp-action="create">Add Restaurant</a>
+</div> 
+
 </body>
 </html>
+
 

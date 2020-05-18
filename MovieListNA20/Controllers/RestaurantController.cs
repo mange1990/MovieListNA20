@@ -44,14 +44,23 @@ namespace MovieListNA20.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult create(RestaurantEditModel  model)
         {
-            var newRestaurant = new Restaurant();
-            newRestaurant.Name = model.Name;
-            newRestaurant.Cuisine = model.Cuisine;
-            newRestaurant = _restaurantData.add(newRestaurant);
+            if (ModelState.IsValid)
+            {
+                var newRestaurant = new Restaurant();
+                newRestaurant.Name = model.Name;
+                newRestaurant.Cuisine = model.Cuisine;
+                newRestaurant = _restaurantData.add(newRestaurant);
 
-            return RedirectToAction("details", new { id = newRestaurant.Id });
+                return RedirectToAction("details", new { id = newRestaurant.Id });
+
+            }else
+            {
+                return View();
+            }
+
         }
     }
 
